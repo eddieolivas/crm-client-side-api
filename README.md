@@ -8,7 +8,7 @@ This API is part of a CRM Ticket system built with MERN stack.
 - run `npm install`
 - run `npm start`
 
-Note: Make sure you have nodemon installed on your system otherwise you can install as a dev dependencies in the project.
+Note: Make sure you have nodemon installed on your system otherwise you can install as a dev dependency in the project.
 
 ## API Resources
 
