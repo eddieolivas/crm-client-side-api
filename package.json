@@ -1,0 +1,18 @@
+{
+  "name": "crm-client-api",
+  "version": "1.0.0",
+  "description": "API for CRM ticket system client-side app",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "Eddie Olivas",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.12"
+  }
+}
