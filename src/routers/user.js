@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { insertUser } = require("../models/user/User.model");
+const { hashPassword } = require("../helpers/bcrypt.helper");
 
 router.all("/", (req, res, next) => {
   //res.json({ message: "Response from user router." });
@@ -9,8 +10,22 @@ router.all("/", (req, res, next) => {
 });
 
 router.post("/", async (req, res) => {
+  const { name, company, address, phone, email, password } = req.body;
+
   try {
-    const result = await insertUser(req.body);
+    // Hash password
+    const hashedPassword = await hashPassword(password);
+
+    const newUserObject = {
+      name,
+      company,
+      address,
+      phone,
+      email,
+      password: hashedPassword,
+    };
+
+    const result = await insertUser(newUserObject);
     console.log(result);
 
     res.json({ message: "New user created.", result });
