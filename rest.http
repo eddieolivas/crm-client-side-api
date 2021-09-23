@@ -1,0 +1,21 @@
+### User sign up endpoint
+POST http://localhost:3001/v1/user
+Content-Type: application/json
+
+{
+    "name": "Eddie Olivas",
+    "company": "Chrysalis Web Development fave",
+    "address": "16023 Mitchell Ave. Tustin, CA 92780",
+    "phone": 71470907363,
+    "email": "eddie@chrysaliswebdevelopment243322.com",
+    "password": "password12342"
+}
+
+### User sign in endpoint
+POST http://localhost:3001/v1/user/login
+Content-Type: application/json
+
+{
+    "email": "eddie@chrysaliswebdevelopment243322.com",
+    "password": "password12342"
+}
