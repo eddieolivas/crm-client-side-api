@@ -66,10 +66,8 @@ router.post("/login", async (req, res) => {
     return res.json({ status: "error", message: "Invalid email or password." });
   }
 
-  const accessJWT = createAccessJWT(user.email);
-  const refreshJWT = createRefreshJWT(user.email);
-
-  console.log(`accessJWT: ${accessJWT}`);
+  const accessJWT = await createAccessJWT(user.email, `${user._id}`);
+  const refreshJWT = await createRefreshJWT(user.email);
 
   res.json({
     status: "success",
