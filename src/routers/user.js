@@ -1,14 +1,32 @@
 const express = require("express");
 const router = express.Router();
 
-const { insertUser, getUserByEmail } = require("../models/user/User.model");
+const {
+  insertUser,
+  getUserById,
+  getUserByEmail,
+} = require("../models/user/User.model");
 const { hashPassword, comparePassword } = require("../helpers/bcrypt.helper");
-const { json } = require("express");
 const { createAccessJWT, createRefreshJWT } = require("../helpers/jwt.helper");
+const {
+  userAuthorization,
+} = require("../middleware/userAuthorization.middleware");
 
 router.all("/", (req, res, next) => {
   //res.json({ message: "Response from user router." });
   next();
+});
+
+// User profile router
+router.get("/", userAuthorization, async (req, res) => {
+  // Example user data from database.
+  const _id = req.userId;
+
+  const userProfile = await getUserById(_id);
+
+  res.json({
+    user: userProfile,
+  });
 });
 
 // Create new user router
@@ -75,6 +93,6 @@ router.post("/login", async (req, res) => {
     accessJWT,
     refreshJWT,
   });
-});
+}); // End user sign in router
 
 module.exports = router;

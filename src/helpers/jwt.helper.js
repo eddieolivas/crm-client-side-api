@@ -34,7 +34,18 @@ const createRefreshJWT = async (payload, _id) => {
   }
 };
 
+const verifyAccessJWT = (accessJWT) => {
+  try {
+    return Promise.resolve(
+      jwt.verify(accessJWT, process.env.JWT_ACCESS_SECRET)
+    );
+  } catch (error) {
+    return Promise.resolve(error);
+  }
+};
+
 module.exports = {
   createAccessJWT,
   createRefreshJWT,
+  verifyAccessJWT,
 };
