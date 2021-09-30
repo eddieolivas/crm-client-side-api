@@ -27,7 +27,7 @@ All the user API routes are as follows `/v1/user/`
 
 ### Ticket API Resources
 
-All the user API router follows `/v1/ticket/`
+All the ticket API router follows `/v1/ticket/`
 
 | #   | Routers                        | Verbs | Progress | Is Private | Description                               |
 | --- | ------------------------------ | ----- | -------- | ---------- | ----------------------------------------- |
@@ -40,7 +40,7 @@ All the user API router follows `/v1/ticket/`
 
 ### Tokens API Resources
 
-All the user API router follows `/v1/tokens`
+All the tokens API router follows `/v1/tokens`
 
 | #   | Routers      | Verbs | Progress | Is Private | Description             |
 | --- | ------------ | ----- | -------- | ---------- | ----------------------- |

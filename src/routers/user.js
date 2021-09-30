@@ -19,7 +19,6 @@ router.all("/", (req, res, next) => {
 
 // User profile router
 router.get("/", userAuthorization, async (req, res) => {
-  // Example user data from database.
   const _id = req.userId;
 
   const userProfile = await getUserById(_id);
