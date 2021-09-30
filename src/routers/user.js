@@ -12,6 +12,7 @@ const { createAccessJWT, createRefreshJWT } = require("../helpers/jwt.helper");
 const {
   userAuthorization,
 } = require("../middleware/userAuthorization.middleware");
+const { emailProcessor } = require("../helpers/email.helper");
 
 router.all("/", (req, res, next) => {
   //res.json({ message: "Response from user router." });
@@ -120,8 +121,20 @@ router.post("/reset-password", async (req, res) => {
   if (user && user._id) {
     // Create the unique password reset pin
     const setPin = await setPasswordResetPin(email);
+    const result = await emailProcessor(email, setPin.pin);
 
-    return res.json(setPin);
+    if (result.messageId) {
+      return res.json({
+        status: "success",
+        message:
+          "If the user exists, the password reset pin will be sent shortly.",
+      });
+    }
+
+    return res.json({
+      status: "error",
+      message: "Unable to process your request. Please try again later.",
+    });
   }
 
   res.json({
