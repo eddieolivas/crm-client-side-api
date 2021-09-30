@@ -29,3 +29,21 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGdtYWls
 ### Get fresh JWT
 GET http://localhost:3001/v1/tokens
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGdtYWlsLmNvbSIsImlhdCI6MTYzMzAzMjA3OCwiZXhwIjoxNjM1NjI0MDc4fQ.48LrlnyGUgmh2WaZ3MXKP6IwC0QrOfdSPh49BQwFv3w
+
+### Password reset request endpoint
+POST http://localhost:3001/v1/user/reset-password
+Content-Type: application/json
+
+{
+    "email": "eddie@gmail.com"
+}
+
+### Update new password
+PATCH http://localhost:3001/v1/user/reset-password
+Content-Type: application/json
+
+{
+    "email": "eddie@gmail.com",
+    "pin": "891401",
+    "newPassword": "password"
+}
