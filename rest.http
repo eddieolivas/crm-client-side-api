@@ -7,7 +7,7 @@ Content-Type: application/json
     "company": "Chrysalis Web Development fave",
     "address": "16023 Mitchell Ave. Tustin, CA 92780",
     "phone": 71470907363,
-    "email": "eddie@gmail.com",
+    "email": "eddie@chrysaliswebdevelopment.com",
     "password": "password1234"
 }
 
@@ -16,13 +16,13 @@ POST http://localhost:3001/v1/user/login
 Content-Type: application/json
 
 {
-    "email": "eddie@gmail.com",
-    "password": "password1234"
+    "email": "eddie@chrysaliswebdevelopment.com",
+    "password": "newPassword12345"
 } 
 
 ### Get user profile endpoint
 GET http://localhost:3001/v1/user/
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGdtYWlsLmNvbSIsImlhdCI6MTYzMzAzNTE3MiwiZXhwIjoxNjMzMDM1MjMyfQ.zsjYVZmBJw2oQrhWPlXqSTA4EHA4_NeJb_tP6yTkMhc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzIwNDU1MiwiZXhwIjoxNjMzMjA1NDUyfQ.ScOuZeSGqxMwLfDIZXPTEdu7efC9s7YhzhyqttXNZpw
 
 ### Token routers
 
@@ -35,7 +35,7 @@ POST http://localhost:3001/v1/user/reset-password
 Content-Type: application/json
 
 {
-    "email": "eddie@gmail.com"
+    "email": "eddie@chrysaliswebdevelopment.com"
 }
 
 ### Update new password
@@ -43,7 +43,7 @@ PATCH http://localhost:3001/v1/user/reset-password
 Content-Type: application/json
 
 {
-    "email": "eddie@gmail.com",
-    "pin": "891401",
-    "newPassword": "password"
+    "email": "eddie@chrysaliswebdevelopment.com",
+    "pin": "374914",
+    "password": "newPassword12345"
 }
