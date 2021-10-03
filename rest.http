@@ -51,3 +51,13 @@ Content-Type: application/json
 ### User logout endpoint
 DELETE http://localhost:3001/v1/user/logout
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzI5NTM0MCwiZXhwIjoxNjMzMjk2MjQwfQ.dgNAVm3UrmliML6I7ZFdPgWeT8zT0hi41bnUioFDKyQ
+
+### Create ticket endpoint
+POST http://localhost:3001/v1/ticket
+Content-Type: application/json
+
+{
+    "subject": "Help me fix the thing",
+    "sender": "Bob",
+    "message": "I don't know how to do things, please help."
+}
