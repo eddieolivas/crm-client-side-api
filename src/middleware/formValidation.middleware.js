@@ -1,0 +1,37 @@
+const Joi = require("joi");
+
+const email = Joi.string()
+  .email({
+    minDomainSegments: 2,
+    tlds: { allow: ["com", "net"] },
+  })
+  .required();
+
+const pin = Joi.number().min(100000).max(999999).required();
+
+const password = Joi.string().alphanum().min(3).max(30).required();
+
+const resetPassReqValidation = (req, res, next) => {
+  const schema = Joi.object({ email });
+  const value = schema.validate(req.body);
+
+  if (value.error) {
+    return res.json({ status: "error", message: value.error.message });
+  }
+  next();
+};
+
+const updatePassValidation = (req, res, next) => {
+  const schema = Joi.object({ email, pin, password });
+  const value = schema.validate(req.body);
+
+  if (value.error) {
+    return res.json({ status: "error", message: value.error.message });
+  }
+  next();
+};
+
+module.exports = {
+  resetPassReqValidation,
+  updatePassValidation,
+};

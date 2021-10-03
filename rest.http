@@ -44,6 +44,6 @@ Content-Type: application/json
 
 {
     "email": "eddie@chrysaliswebdevelopment.com",
-    "pin": "374914",
+    "pin": "942111",
     "password": "newPassword12345"
 }
