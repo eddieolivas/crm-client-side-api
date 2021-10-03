@@ -47,3 +47,7 @@ Content-Type: application/json
     "pin": "942111",
     "password": "newPassword12345"
 }
+
+### User logout endpoint
+DELETE http://localhost:3001/v1/user/logout
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzI5NTM0MCwiZXhwIjoxNjMzMjk2MjQwfQ.dgNAVm3UrmliML6I7ZFdPgWeT8zT0hi41bnUioFDKyQ
