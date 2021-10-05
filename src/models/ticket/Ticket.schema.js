@@ -11,7 +11,7 @@ const TicketSchema = new Schema({
     required: true,
     default: "",
   },
-  addedOn: {
+  createDate: {
     type: Date,
     required: true,
     default: Date.now(),
@@ -22,15 +22,27 @@ const TicketSchema = new Schema({
     maxlength: 30,
     default: "Pending Admin Response",
   },
-  sender: {
-    type: String,
-    maxlength: 50,
-    required: true,
-  },
-  message: {
-    type: String,
-    maxlength: 800,
-  },
+  conversations: [
+    {
+      sender: {
+        type: String,
+        maxlength: 50,
+        required: true,
+        default: "",
+      },
+      message: {
+        type: String,
+        maxlength: 1000,
+        required: true,
+        default: "",
+      },
+      messageDate: {
+        type: Date,
+        required: true,
+        default: Date.now(),
+      },
+    },
+  ],
 });
 
 module.exports = {

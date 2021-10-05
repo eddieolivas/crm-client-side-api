@@ -57,7 +57,7 @@ POST http://localhost:3001/v1/ticket
 Content-Type: application/json
 
 {
-    "subject": "Help me fix the thing",
-    "sender": "Bob",
-    "message": "I don't know how to do things, please help."
+    "subject": "Help me fix the thing again!",
+    "sender": "Bob Joe",
+    "message": "I don't know how to do things, please help me again."
 }

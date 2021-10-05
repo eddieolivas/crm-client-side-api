@@ -20,15 +20,32 @@ router.all("/", (req, res, next) => {
 // 1. Create URL endpoints
 
 router.post("/", async (req, res) => {
-  // 2. Receive new ticket data
-  const { subject, sender, message } = req.body;
+  try {
+    // 2. Receive new ticket data
+    const { subject, sender, message } = req.body;
 
-  // 3. Authorize every request with JWT
+    const ticketObject = {
+      clientId: "6158b92e39ded5da95bf5725",
+      subject,
+      conversations: [
+        {
+          sender,
+          message,
+        },
+      ],
+    };
 
-  // 4. Insert ticket into Mongodb
-  const result = await insertTicket(req.body);
+    // 3. Authorize every request with JWT
 
-  res.json({ result });
+    // 4. Insert ticket into Mongodb
+    const result = await insertTicket(ticketObject);
+
+    if (result._id) {
+      res.json({ status: "success", message: "Your ticket has been created." });
+    }
+  } catch (error) {
+    res.json({ status: "error", message: error.message });
+  }
 });
 
 router.get("/", (req, res) => {});
