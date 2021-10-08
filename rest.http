@@ -54,10 +54,11 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlz
 
 ### Create ticket endpoint
 POST http://localhost:3001/v1/ticket
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzczMTAwNywiZXhwIjoxNjMzNzMxOTA3fQ.zgPdDoI7OJJkRW50oQzFUKjXhAR4AyDhuFwfl0dhfFs
 Content-Type: application/json
 
 {
-    "subject": "Help me fix the thing again!",
+    "subject": "Help me fix the thing again 223!",
     "sender": "Bob Joe",
     "message": "I don't know how to do things, please help me again."
 }

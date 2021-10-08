@@ -2,6 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 const { insertTicket } = require("../models/ticket/Ticket.model");
+const {
+  userAuthorization,
+} = require("../middleware/userAuthorization.middleware");
 
 // TODOS
 
@@ -19,13 +22,13 @@ router.all("/", (req, res, next) => {
 
 // 1. Create URL endpoints
 
-router.post("/", async (req, res) => {
+router.post("/", userAuthorization, async (req, res) => {
   try {
     // 2. Receive new ticket data
     const { subject, sender, message } = req.body;
-
+    const userId = req.userId;
     const ticketObject = {
-      clientId: "6158b92e39ded5da95bf5725",
+      clientId: userId,
       subject,
       conversations: [
         {
