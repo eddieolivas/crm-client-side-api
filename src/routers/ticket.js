@@ -18,12 +18,6 @@ const {
   replyTicketValidation,
 } = require("../middleware/formValidation.middleware");
 
-router.all("/", (req, res, next) => {
-  //res.json({ message: "Response from ticket router." });
-
-  next();
-});
-
 // Create new ticket
 router.post(
   "/",
