@@ -13,6 +13,11 @@ const {
   userAuthorization,
 } = require("../middleware/userAuthorization.middleware");
 
+const {
+  createNewTicketValidation,
+  replyTicketValidation,
+} = require("../middleware/formValidation.middleware");
+
 router.all("/", (req, res, next) => {
   //res.json({ message: "Response from ticket router." });
 
@@ -20,32 +25,40 @@ router.all("/", (req, res, next) => {
 });
 
 // Create new ticket
-router.post("/", userAuthorization, async (req, res) => {
-  try {
-    // Receive new ticket data from request body
-    const { subject, sender, message } = req.body;
-    const userId = req.userId;
-    const ticketObject = {
-      clientId: userId,
-      subject,
-      conversations: [
-        {
-          sender,
-          message,
-        },
-      ],
-    };
+router.post(
+  "/",
+  userAuthorization,
+  createNewTicketValidation,
+  async (req, res) => {
+    try {
+      // Receive new ticket data from request body
+      const { subject, sender, message } = req.body;
+      const userId = req.userId;
+      const ticketObject = {
+        clientId: userId,
+        subject,
+        conversations: [
+          {
+            sender,
+            message,
+          },
+        ],
+      };
 
-    // Insert ticket into Mongodb
-    const result = await insertTicket(ticketObject);
+      // Insert ticket into Mongodb
+      const result = await insertTicket(ticketObject);
 
-    if (result._id) {
-      res.json({ status: "success", message: "Your ticket has been created." });
+      if (result._id) {
+        res.json({
+          status: "success",
+          message: "Your ticket has been created.",
+        });
+      }
+    } catch (error) {
+      res.json({ status: "error", message: error.message });
     }
-  } catch (error) {
-    res.json({ status: "error", message: error.message });
   }
-});
+);
 
 // Get all tickets
 router.get("/", userAuthorization, async (req, res) => {
@@ -77,31 +90,41 @@ router.get("/:ticketId", userAuthorization, async (req, res) => {
 });
 
 // Update reply message from client
-router.put("/:ticketId", userAuthorization, async (req, res) => {
-  try {
-    const _id = req.params.ticketId;
-    const clientId = req.userId;
+router.put(
+  "/:ticketId",
+  userAuthorization,
+  replyTicketValidation,
+  async (req, res) => {
+    try {
+      const _id = req.params.ticketId;
+      const clientId = req.userId;
 
-    const { sender, message } = req.body;
+      const { sender, message } = req.body;
 
-    // Update client reply in Mongodb ticket
-    const result = await updateClientReply({ _id, clientId, message, sender });
-
-    if (result._id) {
-      return res.json({
-        status: "success",
-        message: "Your message was sent successfully",
+      // Update client reply in Mongodb ticket
+      const result = await updateClientReply({
+        _id,
+        clientId,
+        message,
+        sender,
       });
-    }
 
-    res.json({
-      status: "error",
-      message: "Your message could not be sent, please try again later.",
-    });
-  } catch (error) {
-    res.json({ status: "error", message: error.message });
+      if (result._id) {
+        return res.json({
+          status: "success",
+          message: "Your message was sent successfully",
+        });
+      }
+
+      res.json({
+        status: "error",
+        message: "Your message could not be sent, please try again later.",
+      });
+    } catch (error) {
+      res.json({ status: "error", message: error.message });
+    }
   }
-});
+);
 
 // Close ticket
 router.patch("/close-ticket/:ticketId", userAuthorization, async (req, res) => {
