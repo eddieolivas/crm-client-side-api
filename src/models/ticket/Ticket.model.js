@@ -43,7 +43,7 @@ const updateClientReply = ({ _id, clientId, message, sender }) => {
       TicketSchema.findOneAndUpdate(
         { _id, clientId },
         {
-          status: "Pending admin response2",
+          status: "Pending admin response",
           $push: {
             conversations: { message, sender },
           },
