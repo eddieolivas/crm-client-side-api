@@ -54,11 +54,39 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlz
 
 ### Create ticket endpoint
 POST http://localhost:3001/v1/ticket
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzczMTAwNywiZXhwIjoxNjMzNzMxOTA3fQ.zgPdDoI7OJJkRW50oQzFUKjXhAR4AyDhuFwfl0dhfFs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzg5MjIzNCwiZXhwIjoxNjMzODkzMTM0fQ.6AmnxO6SpwQhAH4GmaxAmzItczPNd1iOCgd3c-fVNds
 Content-Type: application/json
 
 {
-    "subject": "Help me fix the thing again 223!",
+    "subject": "My computer broke",
     "sender": "Bob Joe",
-    "message": "I don't know how to do things, please help me again."
+    "message": "My computer totally broke, please help."
 }
+
+### Get tickets endpoint
+GET http://localhost:3001/v1/ticket
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzg4NzEyNiwiZXhwIjoxNjMzODg4MDI2fQ.OaLH7yqwBLGg9VpB5oXGifZT2r2S6_XxJTcmwyKUxwM
+
+### Get ticket by ID endpoint
+GET http://localhost:3001/v1/ticket/616326184634cb883d4d7527
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzg4NzEyNiwiZXhwIjoxNjMzODg4MDI2fQ.OaLH7yqwBLGg9VpB5oXGifZT2r2S6_XxJTcmwyKUxwM
+
+### Update ticket by ID endpoint
+PUT http://localhost:3001/v1/ticket/61632f27cb7c8473f7d8c4b5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzg5MTM3NiwiZXhwIjoxNjMzODkyMjc2fQ.vCuyoPI8tNlhS2S10QbS2KFem4ERa4bnaEW85Ow4UcU
+Content-Type: application/json
+
+{
+    "sender": "Bob",
+    "message": "I will fix your computer asdfsds."
+}
+
+### Close ticket by ID
+PATCH http://localhost:3001/v1/ticket/close-ticket/61632f27cb7c8473f7d8c4b5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzg5MTM3NiwiZXhwIjoxNjMzODkyMjc2fQ.vCuyoPI8tNlhS2S10QbS2KFem4ERa4bnaEW85Ow4UcU
+Content-Type: application/json
+
+### Delete ticket by ID
+DELETE http://localhost:3001/v1/ticket/616337968d8b7133db0fd4a7
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzg5MjIzNCwiZXhwIjoxNjMzODkzMTM0fQ.6AmnxO6SpwQhAH4GmaxAmzItczPNd1iOCgd3c-fVNds
+Content-Type: application/json

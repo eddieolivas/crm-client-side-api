@@ -17,7 +17,6 @@ const userAuthorization = async (req, res, next) => {
     }
 
     req.userId = userId;
-
     return next();
   }
 
