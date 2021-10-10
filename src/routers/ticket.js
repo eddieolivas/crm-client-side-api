@@ -13,11 +13,6 @@ const {
   userAuthorization,
 } = require("../middleware/userAuthorization.middleware");
 
-// TODOS
-
-// 8. Update the ticket status (closed, pending admin response, pending client response)
-// 9. Delete ticket from Mongodb
-
 router.all("/", (req, res, next) => {
   //res.json({ message: "Response from ticket router." });
 
