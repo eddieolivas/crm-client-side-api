@@ -54,13 +54,13 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlz
 
 ### Create ticket endpoint
 POST http://localhost:3001/v1/ticket
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzg5NTYyMywiZXhwIjoxNjMzODk2NTIzfQ.dfQ5FnAzXd7K8s6zw7WznOl1bf6lxiAg-kUgh2dkRQ4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzk3MTAxMywiZXhwIjoxNjMzOTcxOTEzfQ.VTHdmSa4MyaFzw0l29_-7W_1xGPRuPogbkeGONto4rY
 Content-Type: application/json
 
 {
-    "subject": "My computer broke",
-    "sender": "Bob Joe",
-    "message": "My computer totally broke, please help."
+    "subject": "I don't understand",
+    "sender": "Frank Joe",
+    "message": "How do I make the thing happen?"
 }
 
 ### Get tickets endpoint
