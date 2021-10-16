@@ -36,9 +36,9 @@ router.get("/", userAuthorization, async (req, res) => {
   const _id = req.userId;
 
   const userProfile = await getUserById(_id);
-
+  const { name, email } = userProfile;
   res.json({
-    user: userProfile,
+    user: { _id, name, email },
   });
 });
 
