@@ -14,7 +14,7 @@ const TicketSchema = new Schema({
   createDate: {
     type: Date,
     required: true,
-    default: Date.now(),
+    default: Date.now,
   },
   status: {
     type: String,
@@ -39,7 +39,7 @@ const TicketSchema = new Schema({
       messageDate: {
         type: Date,
         required: true,
-        default: Date.now(),
+        default: Date.now,
       },
     },
   ],

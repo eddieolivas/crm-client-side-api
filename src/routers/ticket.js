@@ -106,7 +106,7 @@ router.put(
       if (result._id) {
         return res.json({
           status: "success",
-          message: "Your message was sent successfully",
+          message: "Your message was sent successfully.",
         });
       }
 
@@ -132,7 +132,7 @@ router.patch("/close-ticket/:ticketId", userAuthorization, async (req, res) => {
     if (result._id) {
       return res.json({
         status: "success",
-        message: "Your ticket was closed successfully",
+        message: "Your ticket was closed successfully.",
       });
     }
 

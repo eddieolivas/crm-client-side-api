@@ -28,7 +28,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlz
 
 ### Get fresh JWT
 GET http://localhost:3001/v1/tokens
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGdtYWlsLmNvbSIsImlhdCI6MTYzMzAzMjA3OCwiZXhwIjoxNjM1NjI0MDc4fQ.48LrlnyGUgmh2WaZ3MXKP6IwC0QrOfdSPh49BQwFv3w
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzNDQxMTkxOCwiZXhwIjoxNjM3MDAzOTE4fQ.OnRDc8hK8PWap8ik843Ds827w2cYfoMsP6ir8zKRq-w
 
 ### Password reset request endpoint
 POST http://localhost:3001/v1/user/reset-password
@@ -50,7 +50,7 @@ Content-Type: application/json
 
 ### User logout endpoint
 DELETE http://localhost:3001/v1/user/logout
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzI5NTM0MCwiZXhwIjoxNjMzMjk2MjQwfQ.dgNAVm3UrmliML6I7ZFdPgWeT8zT0hi41bnUioFDKyQ
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzNDQxNDA2NSwiZXhwIjoxNjM0NDE0OTY1fQ._AzBEQEY893EM2cVtRYknLzV3tQvZ49celgdcb2-2nE
 
 ### Create ticket endpoint
 POST http://localhost:3001/v1/ticket
@@ -72,8 +72,8 @@ GET http://localhost:3001/v1/ticket/616326184634cb883d4d7527
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzg4NzEyNiwiZXhwIjoxNjMzODg4MDI2fQ.OaLH7yqwBLGg9VpB5oXGifZT2r2S6_XxJTcmwyKUxwM
 
 ### Update ticket by ID endpoint
-PUT http://localhost:3001/v1/ticket/6163228984b7bfd6b50e3037
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzMzg5NTYyMywiZXhwIjoxNjMzODk2NTIzfQ.dfQ5FnAzXd7K8s6zw7WznOl1bf6lxiAg-kUgh2dkRQ4
+PUT http://localhost:3001/v1/ticket/6163202f537a11686de79929
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVkZGllQGNocnlzYWxpc3dlYmRldmVsb3BtZW50LmNvbSIsImlhdCI6MTYzNDQ5NTI3MiwiZXhwIjoxNjM0NDk2MTcyfQ.eoP7HH4_hS_sLZVrqBwI49pYGLjyY_xP-OQGeaXEkqY
 Content-Type: application/json
 
 {
