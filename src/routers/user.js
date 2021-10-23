@@ -23,6 +23,7 @@ const { emailProcessor } = require("../helpers/email.helper");
 const {
   resetPassReqValidation,
   updatePassValidation,
+  newUserValidation,
 } = require("../middleware/formValidation.middleware");
 const { deleteJWT } = require("../helpers/redis.helper");
 
@@ -43,7 +44,7 @@ router.get("/", userAuthorization, async (req, res) => {
 });
 
 // Create new user router
-router.post("/", async (req, res) => {
+router.post("/", newUserValidation, async (req, res) => {
   const { name, company, address, phone, email, password } = req.body;
 
   try {
@@ -60,6 +61,8 @@ router.post("/", async (req, res) => {
     };
 
     const result = await insertUser(newUserObject);
+
+    // Send activation email
 
     res.json({
       status: "success",
@@ -116,6 +119,7 @@ router.post("/login", async (req, res) => {
   });
 }); // End user sign in router
 
+// Reset password router
 router.post("/reset-password", resetPassReqValidation, async (req, res) => {
   const { email } = req.body;
 
