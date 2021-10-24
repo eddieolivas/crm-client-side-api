@@ -6,8 +6,8 @@ const {
   getUserById,
   getUserByEmail,
   updatePassword,
-  deleteUserRefreshJWT,
   storeUserRefreshJWT,
+  verifyUser,
 } = require("../models/user/User.model");
 const {
   setPasswordResetPin,
@@ -26,6 +26,8 @@ const {
   newUserValidation,
 } = require("../middleware/formValidation.middleware");
 const { deleteJWT } = require("../helpers/redis.helper");
+
+const verificationUrl = "http://localhost:3000/verification/";
 
 router.all("/", (req, res, next) => {
   //res.json({ message: "Response from user router." });
@@ -63,6 +65,11 @@ router.post("/", newUserValidation, async (req, res) => {
     const result = await insertUser(newUserObject);
 
     // Send activation email
+    await emailProcessor({
+      email,
+      type: "new-user-activation",
+      link: verificationUrl + result._id + "/" + result.email,
+    });
 
     res.json({
       status: "success",
@@ -76,6 +83,33 @@ router.post("/", newUserValidation, async (req, res) => {
       message = "A user with this email address already exists.";
     }
     res.json({ status: "error", message });
+  }
+});
+
+// Verify user router
+router.patch("/verify", async (req, res) => {
+  try {
+    const { _id, email } = req.body;
+
+    // Update our user isVerified value in db
+    result = await verifyUser(_id, email);
+
+    if (result && result.id) {
+      return res.json({
+        status: "success",
+        message: "Your user account has been verified. You may log in now.",
+      });
+    }
+
+    return res.json({
+      status: "error ",
+      message: "Invalid request.",
+    });
+  } catch (error) {
+    return res.json({
+      status: "error ",
+      message: "Invalid request.",
+    });
   }
 });
 
@@ -94,6 +128,14 @@ router.post("/login", async (req, res) => {
 
   // Get user with email from db
   const user = await getUserByEmail(email);
+
+  if (!user.isVerified) {
+    return res.json({
+      status: "error",
+      message:
+        "Your user account has not been verified. Please check your email and verify your account before you log in.",
+    });
+  }
 
   const passwordFromDb = user && user._id ? user.password : null;
 

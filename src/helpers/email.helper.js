@@ -23,10 +23,23 @@ const send = (info) => {
   });
 };
 
-const emailProcessor = async ({ email, pin, type }) => {
+const emailProcessor = async ({ email, pin, type, link = "" }) => {
   let info = "";
 
   switch (type) {
+    case "new-user-activation":
+      info = {
+        from: '"CRM Company" <eddie@chrysaliswebdevelopment.com>', // sender address
+        to: email, // list of receivers
+        subject: "CRM Ticket System - Please activate your user profile.", // Subject line
+        text: `Please click the following link to activate your new user account. ${link}`, // plain text body
+        html: `<strong>Hello!</strong>
+        <p>Please click the following link to activate your new user account.</p>
+        <p>${link}</p>`, // html body
+      };
+
+      send(info);
+      break;
     case "request-new-password":
       info = {
         from: '"CRM Company" <eddie@chrysaliswebdevelopment.com>', // sender address

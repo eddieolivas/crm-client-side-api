@@ -9,7 +9,7 @@ const email = Joi.string()
 
 const pin = Joi.number().min(100000).max(999999).required();
 
-const password = Joi.string().alphanum().min(3).max(30).required();
+const password = Joi.string().min(3).max(30).required();
 
 const shortString = Joi.string().min(2).max(50);
 const longString = Joi.string().min(2).max(100);
@@ -29,11 +29,10 @@ const newUserValidation = (req, res, next) => {
   });
   const value = schema.validate(req.body);
 
-  return console.log(value);
-
   if (value.error) {
     return res.json({ status: "error", message: value.error.message });
   }
+
   next();
 };
 
