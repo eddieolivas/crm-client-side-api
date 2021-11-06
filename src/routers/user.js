@@ -176,16 +176,10 @@ router.post("/reset-password", resetPassReqValidation, async (req, res) => {
       pin: setPin.pin,
       type: "request-new-password",
     });
-
-    return res.json({
-      status: "success",
-      message:
-        "If the user exists, the password reset pin will be sent shortly.",
-    });
   }
 
   res.json({
-    status: "error",
+    status: "success",
     message: "If the user exists, the password reset pin will be sent shortly.",
   });
 }); // End reset password request router

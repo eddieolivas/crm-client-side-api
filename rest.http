@@ -6,7 +6,7 @@ Content-Type: application/json
     "name": "Eddie Olivas",
     "company": "Chrysalis Web Development fave",
     "address": "16023 Mitchell Ave. Tustin, CA 92780",
-    "phone": 71470907363,
+    "phone": "7147090736",
     "email": "eddie@chrysaliswebdevelopment.com",
     "password": "password1234"
 }
