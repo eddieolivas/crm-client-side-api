@@ -7,7 +7,7 @@ const email = Joi.string()
   })
   .required();
 
-const pin = Joi.number().min(100000).max(999999).required();
+const pin = Joi.number().min(10000).max(999999).required();
 
 const password = Joi.string().min(3).max(30).required();
 
