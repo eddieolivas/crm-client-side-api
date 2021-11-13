@@ -129,7 +129,7 @@ router.post("/login", async (req, res) => {
   // Get user with email from db
   const user = await getUserByEmail(email);
 
-  if (!user.isVerified) {
+  if (!user?.isVerified) {
     return res.json({
       status: "error",
       message:
